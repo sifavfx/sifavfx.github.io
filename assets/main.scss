@@ -1,12 +1,17 @@
 ---
 ---
 
+@font-face {
+	font-family: 'Lemon/Milk';
+	src: url('http://www.fontsaddict.com/fontface/lemonmilk.ttf%27');
+}
+
 $text-color: #434343;
 $anchor-text-color: #CE534D;
 $background-color: #ffffff;
 
 body {
-	font-family: 'Vollkorn', serif;
+	font-family: 'Lemon/Milk', serif;
 	color: $text-color;
 	background-color: $background-color;
 }
