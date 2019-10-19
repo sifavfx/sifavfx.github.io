@@ -6,10 +6,10 @@ function setup() {
   // put setup code here  
   S_W = 800;
   S_H = 800;
-  test = new Particle(100);
+  test = new Particle(10, createVector(random(-1, 1), random(-1, 1)));
   gui = new gui();
   createCanvas(S_W, S_H);
-  gravity = createVector(0, 5);
+  gravity = createVector(0, 2);
 }
 
 function draw() {
@@ -22,8 +22,9 @@ function draw() {
 
 ////////////////////////////////
 class Particle{
-  constructor(radius){
+  constructor(radius, vel){
     this.radius = radius;
+    this.vel = vel;
     this.location = createVector(S_W/2, S_H/2);  
   }
 
@@ -31,9 +32,21 @@ class Particle{
     noStroke();
     fill(255);
     circle(this.location.x, this.location.y, this.radius);
-    this.location.add(createVector(0.9, 0));
-    this.location.add(gravity);
+    this.location.add(this.vel);
+    this.vel.add(gravity);
     //if(this.radius < 0) radius
+
+    if(this.location.y > S_H || this.location.y < 0){
+      this.reset();
+    }
+    if(this.location.x < 0 || this.location.x > S_W){
+      this.reset();
+    }
+  }
+
+  reset(){
+    this.vel = createVector(random(-5, 5), random(-50, 5));
+    this.location = createVector(S_W/2, S_H/2);
   }
 }
 
